@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young and Dynamic Leadership Workshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --deep-red: #C62828;
+            --orange: #FF9800;
+            --yellow: #FFEB3B;
+            --green: #4CAF50;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --light-bg: #ffffff;
+            --light-text: #333333;
+            --light-border: #e0e0e0;
+        }
+
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)), 
+                        url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2089&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light-text);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .brand-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-circle {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .energy-burst {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--deep-red), 
+                var(--orange), 
+                var(--yellow), 
+                var(--green), 
+                var(--deep-red)
+            );
+            animation: rotate 8s linear infinite;
+            opacity: 0.9;
+        }
+
+        .energy-burst::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: var(--light-bg);
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .central-icon {
+            position: relative;
+            z-index: 2;
+            font-size: 3.5rem;
+            background: linear-gradient(to right, var(--deep-red), var(--orange), var(--yellow), var(--green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .brand-text {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--deep-red), var(--orange), var(--yellow), var(--green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .workshop-animation {
+            margin: 20px auto;
+            width: 200px;
+            height: 150px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .workshop-icon {
+            font-size: 4rem;
+            color: var(--orange);
+            animation: bounce 2s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .workshop-icon::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--deep-red), var(--orange), var(--yellow), var(--green));
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulse 3s infinite;
+        }
+
+        .thought-bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bubble {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .bubble:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            top: 10px;
+            left: 30px;
+            background: var(--deep-red);
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 15px;
+            height: 15px;
+            top: 40px;
+            right: 20px;
+            background: var(--orange);
+            animation-delay: 0.5s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 25px;
+            height: 25px;
+            bottom: 20px;
+            left: 20px;
+            background: var(--yellow);
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 18px;
+            height: 18px;
+            bottom: 40px;
+            right: 40px;
+            background: var(--green);
+            animation-delay: 1.5s;
+        }
+
+        .date-venue {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .date-venue div {
+            background: linear-gradient(to right, var(--deep-red), var(--orange));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .time-slot {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+            border-image: linear-gradient(to bottom, var(--deep-red), var(--orange), var(--yellow), var(--green));
+            border-image-slice: 1;
+        }
+
+        .time-slot:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .time-slot.active {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
+        }
+
+        .time {
+            font-weight: 600;
+            color: var(--deep-red);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .time i {
+            margin-right: 10px;
+            color: var(--orange);
+        }
+
+        .activity {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .comments {
+            font-style: italic;
+            margin-bottom: 18px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .champion {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, rgba(198, 40, 40, 0.9), rgba(76, 175, 80, 0.9));
+            color: white;
+            padding: 10px 18px;
+            border-radius: 20px;
+            width: fit-content;
+            font-weight: 600;
+        }
+
+        .champion i {
+            margin-right: 8px;
+            color: var(--yellow);
+        }
+
+        .current-time {
+            text-align: center;
+            margin: 25px 0;
+            font-size: 1.3rem;
+            background: var(--light-bg);
+            color: var(--light-text);
+            padding: 12px 25px;
+            border-radius: 30px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--light-border);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-10px) translateX(5px); }
+            50% { transform: translateY(-5px) translateX(-5px); }
+            75% { transform: translateY(-15px) translateX(3px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .schedule-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .brand-text {
+                font-size: 2.2rem;
+            }
+            
+            .date-venue {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .central-icon {
+                font-size: 2.8rem;
+            }
+            
+            .workshop-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand-container">
+                <div class="logo-circle">
+                    <div class="energy-burst"></div>
+                    <div class="central-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="brand-text">Young & Dynamic Workshop Program</div>
+                <div class="workshop-animation">
+                    <div class="thought-bubbles">
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                    </div>
+                    <div class="workshop-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="date-venue">
+                <div><i class="fas fa-calendar-alt"></i> Date: 29 November 2025</div>
+                <div><i class="fas fa-map-marker-alt"></i> Venue: Monomotapa Hotel</div>
+            </div>
+        </header>
+
+        <div class="current-time">
+            <i class="fas fa-clock"></i> Current Time: <span id="currentTime">Loading...</span>
+        </div>
+
+        <div class="schedule-container" id="schedule">
+            <!-- Schedule items will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Workshop schedule data
+        const schedule = [
+            {
+                time: "08:15 – 08:55",
+                activity: "Arrival and Registration",
+                comments: "Student Arrival and Registration.",
+                champion: "ALL"
+            },
+            {
+                time: "08:55 – 09:00",
+                activity: "Welcome Remarks and Opening Prayer",
+                comments: "Leaders are welcomed and the tone for the training is set.",
+                champion: "Senior Associate / SBU Rep"
+            },
+            {
+                time: "09:00 – 09:20",
+                activity: "Introductions and Expectations",
+                comments: "Leaders introduce themselves, highlight two strengths and one area they need support in, select accountability partners, and share expectations for the day.",
+                champion: "ALL"
+            },
+            {
+                time: "09:20 – 10:20",
+                activity: "HLF Vision, Mission & Values",
+                comments: "Session on HLF's key tenets, goals, and guiding values.",
+                champion: "Ms. Petronella Maramba"
+            },
+            {
+                time: "10:20 – 10:35",
+                activity: "Tea Break",
+                comments: "Health break and networking over tea",
+                champion: "ALL"
+            },
+            {
+                time: "10:35 – 11:35",
+                activity: "Leadership Training",
+                comments: "Training on leadership types and the value of servant leadership.",
+                champion: "Pastor P"
+            },
+            {
+                time: "11:35 – 12:00",
+                activity: "Reflections and Team Building",
+                comments: "Indoor team building focused on critical thinking and communication.",
+                champion: "Tawanda / Pastor Munashe"
+            },
+            {
+                time: "12:00 – 12:40",
+                activity: "Y&D Structure and Reporting",
+                comments: "Overview of Y&D club governance, roles, responsibilities, and reporting lines.",
+                champion: "Senior Associate / SBU Rep"
+            },
+            {
+                time: "12:40 – 13:40",
+                activity: "Lunch",
+                comments: "Lunch and student reimbursements.",
+                champion: "ALL"
+            },
+            {
+                time: "13:40",
+                activity: "Departure",
+                comments: "Students depart for Hillside for the prayer retreat.",
+                champion: "LLD"
+            }
+        ];
+
+        // DOM elements
+        const scheduleContainer = document.getElementById('schedule');
+        const currentTimeElement = document.getElementById('currentTime');
+
+        let currentSession = 0;
+
+        // Initialize the schedule
+        function initSchedule() {
+            scheduleContainer.innerHTML = '';
+            
+            schedule.forEach((session, index) => {
+                const sessionElement = document.createElement('div');
+                sessionElement.className = `time-slot ${index === currentSession ? 'active' : ''}`;
+                
+                sessionElement.innerHTML = `
+                    <div class="time"><i class="far fa-clock"></i> ${session.time}</div>
+                    <div class="activity">${session.activity}</div>
+                    <div class="comments">${session.comments}</div>
+                    <div class="champion"><i class="fas fa-user-tie"></i> ${session.champion}</div>
+                `;
+                
+                scheduleContainer.appendChild(sessionElement);
+            });
+        }
+
+        // Update current time
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            });
+            currentTimeElement.textContent = timeString;
+        }
+
+        // Initialize the application
+        initSchedule();
+        updateCurrentTime();
+        
+        // Update time every second
+        setInterval(updateCurrentTime, 1000);
+        
+        // Simulate workshop progress (for demo purposes)
+        setInterval(() => {
+            if (currentSession < schedule.length - 1) {
+                currentSession++;
+                initSchedule();
+            }
+        }, 15000); // Change session every 15 seconds for demo
+    </script>
+</body>
+</html>
